@@ -1,16 +1,8 @@
-# This is a sample Python script.
+a = 10; c = 3
+b = 2
 
-# Press ⌃R to execute it or replace it with your code.
-# Press Double ⇧ to search everywhere for classes, files, tool windows, actions, and settings.
+print('Hello world!')
+print(1 + 2 + a + 2 * b)
 
-
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press ⌘F8 to toggle the breakpoint.
-
-
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('PyCharm')
-
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+if (a > b) & (1 == 1): print('a > b'); print('I love Python')
+print('I love footbal')
