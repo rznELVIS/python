@@ -8,7 +8,27 @@ headers_auth = {'Authorization': 'Basic ' + KEY}
 
 auth = requests.post(URL_AUTH, headers=headers_auth)
 
-print(auth.status_code)
-print(auth.text)
-
-print("Hello translator!")
+if auth.status_code == 200:
+    token = auth.text
+    while True:
+        word = input('Введите слово:')
+        if word:
+            headers_translate = {
+                'Authorization': 'Bearer ' + token
+            }
+            params = {
+                'text': word,
+                'srcLang': 1033, #English
+                'dstLang': 1049 #Rissian
+            }
+            requestTranslate = requests.get(
+                URL_TRANSLATE,
+                headers=headers_translate,
+                params=params)
+            result = requestTranslate.json()
+            try:
+                print('Перевод:' + result['Translation']['Translation'])
+            except:
+                print('Не найден перевод.')
+else:
+    print('auth error!')
