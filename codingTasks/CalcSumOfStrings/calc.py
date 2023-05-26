@@ -12,8 +12,8 @@ class Calc:
         if not second_value or second_value.isspace():
             return self.__getStrValueError("Второе значение")
 
-        first_value_int: int = self.__parse(first_value)
-        second_value_int: int = self.__parse(second_value)
+        first_value_int: int = self._parse(first_value)
+        second_value_int: int = self._parse(second_value)
 
         return str(first_value_int + second_value_int)
 
@@ -29,7 +29,7 @@ class Calc:
 
         return int(result)
 
-    def __getIntFromChar(self, symbol: str) -> int:
+    def _getIntFromChar(self, symbol: str) -> int:
         if symbol == "1":
             return 1
 
@@ -61,3 +61,18 @@ class Calc:
 
     def __getStrValueError(self, value_name):
         return "{name} имеет не корректное значение.".format(name = value_name)
+
+
+class CalcEncoding(Calc):
+
+    def _parse(self, value: str) -> int:
+        char_zero_index: int = ord("0")
+        index: int = len(value) - 1
+        result: int = 0
+
+        for char in value:
+            value: int = (ord(char) - char_zero_index) * math.pow(10, index)
+            result += int(value)
+            index -= 1
+
+        return result

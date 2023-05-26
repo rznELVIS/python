@@ -1,9 +1,9 @@
 import unittest
-from CalcSumOfStrings.calc import Calc
+from CalcSumOfStrings.calc import Calc, CalcEncoding
 from parameterized import parameterized
 
 
-class MyTestCase(unittest.TestCase):
+class CalcTests(unittest.TestCase):
     @parameterized.expand([
         ["15", "11", "26"],
         ["0", "10", "10"],
@@ -44,6 +44,24 @@ class MyTestCase(unittest.TestCase):
         result: str = calc.add("100", value)
 
         self.assertEqual(result, "Второе значение имеет не корректное значение.")
+
+
+class CalcEncodingTests(unittest.TestCase):
+
+    @parameterized.expand([
+        ["15", "11", "26"],
+        ["0", "10", "10"],
+        ["0", "0", "0"],
+        ["10", "0", "10"],
+        ["5", "5", "10"],
+    ])
+    def test_calc_add_correctly(self, value_1, value_2, expected_result):
+        calc: CalcEncoding = CalcEncoding()
+
+        result: str = calc.add(value_1, value_2)
+
+        # assert
+        self.assertEqual(result, expected_result)
 
 
 if __name__ == '__main__':
