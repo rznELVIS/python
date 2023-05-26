@@ -5,9 +5,13 @@ from parameterized import parameterized
 
 class MyTestCase(unittest.TestCase):
     @parameterized.expand([
-        ["10", "11", "21"],
+        ["15", "11", "26"],
+        ["0", "10", "10"],
+        ["0", "0", "0"],
+        ["10", "0", "10"],
+        ["5", "5", "10"],
     ])
-    def test_something(self, value_1, value_2, expected_result):
+    def test_calc_add_correctly(self, value_1, value_2, expected_result):
         calc: Calc = Calc()
 
         result: str = calc.add(value_1, value_2)
@@ -24,9 +28,22 @@ class MyTestCase(unittest.TestCase):
     def test_first_value_is_incorrect_then_error_is_returned(self, value: str):
         calc: Calc = Calc()
 
-        result: str = calc.add(value, "stub")
+        result: str = calc.add(value, "100")
 
         self.assertEqual(result, "Первое значение имеет не корректное значение.")
+
+    @parameterized.expand([
+        [""],
+        [" "],
+        ["     "],
+        [None],
+    ])
+    def test_second_value_is_incorrect_then_error_is_returned(self, value: str):
+        calc: Calc = Calc()
+
+        result: str = calc.add("100", value)
+
+        self.assertEqual(result, "Второе значение имеет не корректное значение.")
 
 
 if __name__ == '__main__':
