@@ -1,0 +1,2 @@
+class PalindromeSearcher:
+	pass
