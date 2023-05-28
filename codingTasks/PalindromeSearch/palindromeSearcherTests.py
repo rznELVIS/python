@@ -44,3 +44,13 @@ class PalindromeSearcherTests(unittest.TestCase):
 
 		# assert
 		self.assertEqual("text doesn't have value.", str(context.exception))
+
+	def test_search_txt(self):
+		# arrange
+		searcher: PalindromeSearcher = PalindromeSearcher()
+
+		# act
+		result: str = searcher.search("text")
+
+		# assert
+		self.assertTrue(isinstance(result, str))
