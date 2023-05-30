@@ -50,7 +50,7 @@ class PalindromeSearcherTests(unittest.TestCase):
 		searcher: PalindromeSearcher = PalindromeSearcher()
 
 		# act
-		result: str = searcher.search("text")
+		result: str = searcher.search("12texet")
 
 		# assert
 		self.assertTrue(isinstance(result, str))
